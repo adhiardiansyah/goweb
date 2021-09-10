@@ -51,7 +51,7 @@ func Auth(HandlerFunc http.HandlerFunc) http.HandlerFunc {
 		session, _ := store.Get(r, "session")
 		_, ok := session.Values["userID"]
 		if !ok {
-			http.Redirect(w, r, "/login", 302)
+			http.Redirect(w, r, "/login", http.StatusFound)
 			return
 		}
 		// ServeHTTP calls f(w, r)
